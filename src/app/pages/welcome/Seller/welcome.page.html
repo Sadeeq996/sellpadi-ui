@@ -1,0 +1,33 @@
+<ion-content fullscreen>
+
+  <swiper-container [modules]="swiperModules" [pagination]="true" [loop]="false" [slidesPerView]="1"
+    (swiperslidechange)="onSlideChange()">
+    <swiper-slide>
+      <div class="">
+        <img src="assets/images/logo.png" alt="SellPadi Logo" class="logo spin-logo" />
+        <h1 class="stylish-title slide-in">SellPadi</h1>
+      </div>
+    </swiper-slide>
+
+
+    <swiper-slide>
+      <img src="assets/images/welcome1.png" alt="SellPadi Logo" class="logo spin-logo" />
+      <h2>Track sales, manage stock, and record debts all in one place</h2>
+      <p>All in one easy app</p>
+    </swiper-slide>
+
+    <swiper-slide>
+      <img src="assets/images/welcome2.png" alt="SellPadi Logo" class="logo spin-logo" />
+      <h2>Stay organized, boost profits, and keep selling</h2>
+      <p>Your smart sales companion</p>
+    </swiper-slide>
+
+    <swiper-slide>
+      <img src="assets/images/welcome3.png" alt="SellPadi Logo" class="logo spin-logo" />
+      <h2>Join 100s of businesses using sellpadi</h2>
+      <p>Simple tool for smarter selling</p>
+      <ion-button expand="full" routerLink="/tabs">Continue</ion-button>
+    </swiper-slide>
+  </swiper-container>
+
+</ion-content>

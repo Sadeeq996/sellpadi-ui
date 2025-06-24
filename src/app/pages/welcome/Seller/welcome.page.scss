@@ -15,18 +15,18 @@ swiper-container {
   
 
   .logo {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto;
     display: block;
   }
   
-  /* 🔁 Spin animation */
+  /* Spin animation */
   .spin-logo {
-    animation: spin 2s ease-in-out;
+    animation: spin 3s ease-in-out;
   }
   
-  /* 👈 Slide in title (delayed to happen *after* spin) */
+  /* Slide in title (delayed to happen *after* spin) */
   .stylish-title {
     text-align: center;
     font-size: 2rem;
@@ -37,7 +37,7 @@ swiper-container {
     animation: slideIn 1s ease-in-out 2s forwards;
   }
   
-  /* 🎯 Keyframes */
+  /* Keyframes */
   @keyframes spin {
     0% {
       transform: rotate(0);

@@ -1,0 +1,41 @@
+ion-content {
+    --background: #f9f9f9;
+  }
+  
+  .iphone-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    display: block;
+    margin: 2rem auto 1rem auto;
+    width: 80px;
+    animation: spin 2s linear;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  ion-button {
+    --background: #e63946;
+    --border-radius: 50px;
+    margin-top: 1.5rem;
+  }
+  
+  .password-toggle {
+    font-size: 20px;
+    padding-right: 0.5rem;
+    color: #666;
+    cursor: pointer;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  

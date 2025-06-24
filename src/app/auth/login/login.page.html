@@ -1,0 +1,28 @@
+<app-auth-shell>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <ion-segment value="login">
+      <ion-segment-button value="login" (click)="navigateTo('login')">Log In</ion-segment-button>
+      <ion-segment-button value="signup" (click)="navigateTo('signup')">Sign Up</ion-segment-button>
+    </ion-segment>
+
+    <ion-item>
+      <ion-input placeholder="Enter email or username" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password"></ion-input>
+      <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" class="password-toggle"
+        (click)="togglePassword()">
+      </ion-icon>
+    </ion-item>
+
+
+    <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">Log In</ion-button>
+
+    <div class="or-separator">OR</div>
+    <ion-button expand="block" fill="clear" (click)="googleLogin()">
+      <img src="assets/icons/google.svg" alt="Google Login" />
+    </ion-button>
+  </form>
+</app-auth-shell>
