@@ -1,0 +1,56 @@
+swiper-container {
+    --swiper-pagination-bullet-inactive-color: #ccc;
+    --swiper-pagination-color: var(--ion-color-primary);
+    height: 100%;
+  }
+  
+  swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* 🔁 Spin animation */
+  .spin-logo {
+    animation: spin 2s ease-in-out;
+  }
+  
+  /* 👈 Slide in title (delayed to happen *after* spin) */
+  .stylish-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideIn 1s ease-in-out 2s forwards;
+  }
+  
+  /* 🎯 Keyframes */
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  

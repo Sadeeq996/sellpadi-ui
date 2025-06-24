@@ -1,0 +1,32 @@
+<ion-content fullscreen>
+  
+  <swiper-container
+    [modules]="swiperModules"
+    [pagination]="true"
+    [loop]="false"
+    [slidesPerView]="1"
+    (swiperslidechange)="onSlideChange()"
+  >
+  <swiper-slide>
+    <div class="iphone-card">
+      <img src="assets/images/logo.png" alt="SellPadi Logo" class="logo spin-logo" />
+      <h1 class="stylish-title slide-in">SellPadi</h1>
+    </div>
+  
+    <h2>Welcome to SellPadi</h2>
+    <p>Buy and sell easily from trusted vendors</p>
+  </swiper-slide>
+  
+
+    <swiper-slide>
+      <h2>Explore Products</h2>
+      <p>View deals across all categories</p>
+    </swiper-slide>
+
+    <swiper-slide>
+      <h2>Start Shopping</h2>
+      <ion-button expand="full" routerLink="/tabs">Continue</ion-button>
+    </swiper-slide>
+</swiper-container>
+
+</ion-content>
