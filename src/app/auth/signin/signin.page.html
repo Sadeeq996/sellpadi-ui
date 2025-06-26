@@ -1,17 +1,17 @@
 <!-- <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>signup</ion-title>
+    <ion-title>signin</ion-title>
   </ion-toolbar>
 </ion-header> -->
 
 <app-auth-shell>
   <div class="signin-card">
     <div class="custom-segment">
-      <button type="button" class="segment-btn" [routerLink]="'/login'">Log In</button>
-      <button type="button" class="segment-btn active">Sign Up</button>
+      <button type="button" class="segment-btn active">Log In</button>
+      <button type="button" class="segment-btn" [routerLink]="'/signup'">Sign Up</button>
     </div>
 
-    <form [formGroup]="signupForm" (ngSubmit)="signup()" novalidate class="signin-form">
+    <form [formGroup]="loginForm" (ngSubmit)="signin()" novalidate class="signin-form">
 
       <div class="input-group input-underline">
         <ion-icon name="mail-outline" class="input-icon"></ion-icon>
@@ -26,21 +26,17 @@
         </button>
       </div>
 
-      <div class="input-group input-underline">
-        <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
-        <ion-input [type]="hide ? 'password' : 'text'" formControlName="confirmPassword"
-          placeholder="Confirm Password"></ion-input>
-        <button type="button" class="input-icon input-action" (click)="hide = !hide">
-          <ion-icon [name]="hide ? 'eye-off-outline' : 'eye-outline'"></ion-icon>
-        </button>
+      <div class="forgot-password">
+        <a routerLink="/forget-password">Forgot Password?</a>
       </div>
 
-      <button type="submit" class="custom-login-btn">Sign Up</button>
+      <button expand="block" class="custom-login-btn" type="submit">Log In</button>
+      <button [hidden]="true" type="button" class="continue-btn" routerLink="/">Continue without login</button>
 
       <div class="or-separator"><span>OR</span></div>
 
       <div class="google-login">
-        <button class="google-btn" type="button" (click)="onGoogleSignup()">
+        <button class="google-btn" type="button" (click)="onGoogleLogin()">
           <img src="assets/images/google.png" class="google-logo" alt="Google logo" />
         </button>
       </div>

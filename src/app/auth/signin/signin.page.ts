@@ -1,29 +1,26 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { IonicModule } from '@ionic/angular';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { IonicModule, ToastController } from '@ionic/angular';
+// import { AuthService } from '../../shared/services/authentications/auth.service';
+import { Toast } from '@capacitor/toast';
 import { AuthShellComponent } from '../auth-shell/auth-shell.component';
 
-import { ToastController } from '@ionic/angular';
-// import { AuthService } from '../../shared/services/authentications/auth.service';
-// import { Toast } from '@capacitor/toast';
-
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-signin',
+  templateUrl: './signin.page.html',
+  styleUrls: ['./signin.page.scss'],
   standalone: true,
-  imports: [AuthShellComponent, RouterModule, IonicModule, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [AuthShellComponent, CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterModule]
 })
-export class LoginPage implements OnInit {
-
-  showPassword = false;
-  password: string = '';
-
+export class SigninPage implements OnInit {
 
   private emailPattern =
     '(?:[a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\\])';
@@ -35,8 +32,12 @@ export class LoginPage implements OnInit {
   title: string = '';
   message: string = '';
 
-  constructor(private fb: FormBuilder, private router: Router,
+  constructor(
+    private fb: FormBuilder,
+    // private authService: AuthService,
+    private router: Router,
     private toastCtrl: ToastController
+
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -44,19 +45,16 @@ export class LoginPage implements OnInit {
       rememberMe: [false]
     });
   }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    // this.authService.redirectToSignin();
   }
 
-
-  togglePassword() {
-    this.showPassword = !this.showPassword;
+  get loginFormControls() {
+    return this.loginForm.controls;
   }
 
-  onLogin() {
-    if (this.loginForm.valid) {
-      // Call API
-    }
+  navigateTo(path: 'signin' | 'signup') {
+    this.router.navigate([`/auth/${path}`]);
   }
 
   signin() {
@@ -86,17 +84,6 @@ export class LoginPage implements OnInit {
     this.loginForm.reset();
   }
 
-  googleLogin() {
-    // Trigger Google Auth
-  }
-
-  navigateTo(path: 'login' | 'signup') {
-    this.router.navigate([`/auth/${path}`]);
-  }
-  get loginFormControls() {
-    return this.loginForm.controls;
-  }
-
   async presentToast(header: string, message: string, cssClass: string, duration?: number) {
     const toast = await this.toastCtrl.create({
       buttons: [
@@ -112,6 +99,14 @@ export class LoginPage implements OnInit {
       duration: duration || 2000,
     });
     await toast.present();
+  }
+
+  showInterestPage() {
+    // if (!this.authService.showInterest()) {
+    //   this.router.navigate(['/interests']);
+    // } else {
+    //   this.router.navigate(['/']);
+    // }
   }
 
   private handleResponse(response: any) {

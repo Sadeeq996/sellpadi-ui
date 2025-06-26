@@ -4,8 +4,20 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { IonicModule } from '@ionic/angular';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { addIcons } from 'ionicons';
+import * as allIcons from 'ionicons/icons';
 
-import { register } from 'swiper/element/bundle'; 
+addIcons(allIcons);
+
+import { mailOutline, lockClosedOutline, eyeOutline, eyeOffOutline } from 'ionicons/icons';
+addIcons({
+  'mail-outline': mailOutline,
+  'lock-closed-outline': lockClosedOutline,
+  'eye-outline': eyeOutline,
+  'eye-off-outline': eyeOffOutline,
+});
+import { register } from 'swiper/element/bundle';
+
 register();
 
 bootstrapApplication(AppComponent, {
